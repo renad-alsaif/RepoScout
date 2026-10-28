@@ -34,8 +34,6 @@ uv run main.py setup
 uv run app.py
 ```
 
-Your browser opens http://127.0.0.1:7860. Paste a GitHub repository link, type a question and click **Ask**. Open **How RepoScout found this** to see which files it read.
-
 ### 3b. Use the terminal
 
 ```bash
