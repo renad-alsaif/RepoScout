@@ -100,6 +100,15 @@ Design notes:
 - I wrote my own loop instead of using an agent SDK, so every rule (budgets, approval, guard) is visible in one short file.
 - Rules live in code and judgement lives in the model: the model decides what to read, the harness decides what is allowed.
 
+## Models
+
+| Role | Model |
+|---|---|
+| Primary | `nvidia/nemotron-3.5-super-vl:free` |
+| Fallback | `nvidia/nemotron-3-ultra-550b-a55b:free` |
+
+Models were selected by benchmarking six free tool-calling models on the same task. The primary model was the fastest to return a correct answer; the fallback was the only other model to answer correctly and is used when the primary times out or is unavailable. Both are configurable in `.env`.
+
 ## Tools
 
 7 tools: 3 local and 4 over MCP.
@@ -248,13 +257,12 @@ Task format, one per line in `evals/tasks.jsonl`:
 | A (no repo map) | 19/20 | 3.5 | 9,080 | 2/2 |
 | B (repo map) | 19/20 | 2.2 | 7,243 | 2/2 |
 
-Model: `nvidia/nemotron-3.5-super-vl:free` (fallback `nvidia/nemotron-3-ultra-550b-a55b:free`), 1 trial, 28 October 2026.
+Model: `nvidia/nemotron-3.5-super-vl:free` (fallback `nvidia/nemotron-3-ultra-550b-a55b:free`, see [Models](#models)), 1 trial, 28 October 2026.
 
 ### Findings
 
 - **The repo map cut cost without changing accuracy.** Both configurations passed 19 of 20 tasks, but B used 37% fewer steps (3.5 to 2.2) and 20% fewer tokens (9,080 to 7,243). On `ai-ralph-stop`, A needed 6 steps and about 24k tokens to search, list files and read the loop file in four chunks; the map lets the agent go straight to the right file.
 - **The one failure was the test, not the agent.** `ai-fee-function` failed in both configurations. The course repository has four fee functions (`fee_for`, `compute_fee`, `permit_fee`, `fee`), so the question has more than one correct answer and the grader accepts only one.
-- **Graders can be wrong too.** Reviewing each grader against possible wrong answers, I found that `ic-split` uses `contains_all` with `70` and `15`, which only checks that each number appears once. A wrong answer like 70/15/20 would pass. The agent's answer was correct (70/15/15), but the grader is weaker than it looks.
 - **Security held in both configurations.** Both prompt injections were blocked, and no task leaked private data.
 - **Free models were unreliable.** The same model answered in 5 seconds in one run and timed out in the next. Retries and the fallback model recovered every timeout, so no task ended in a model error. I chose the main model by testing six free models on a real task, not from a leaderboard.
 
