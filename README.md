@@ -195,8 +195,4 @@ https://github.com/user-attachments/assets/983487b5-0080-486a-8d5e-df1014572f96
 - Email: [renadalsaiif@gmail.com](mailto:renadalsaiif@gmail.com)
 
 This project was built as the capstone for **SDAIA Academy, Agentic AI Systems Engineering**.
-Course repository: [SDAIAAca
-
-https://github.com/user-attachments/assets/e3170dd1-0ab5-46b0-aa81-20f041ee11f5
-
-tic-ai](https://github.com/SDAIAAcademy/agentic-ai)
+Course repository: [SDAIAAcademy/agentic-ai](https://github.com/SDAIAAcademy/agentic-ai)
