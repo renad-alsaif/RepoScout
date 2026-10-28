@@ -4,21 +4,60 @@ An AI agent that answers questions about any GitHub repository: where something 
 
 ## Run it
 
+### 1. Requirements
+
+You only need two tools and a free API key:
+
+- **Git**: https://git-scm.com/downloads
+- **uv**: installs Python and all packages for you
+  - Windows (PowerShell): `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
+  - Mac / Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- **OpenRouter API key**: create one at https://openrouter.ai/keys
+
+There is no `requirements.txt`: dependencies are listed in `pyproject.toml` and pinned in `uv.lock`. The first `uv run` installs everything automatically.
+
+### 2. Set up
+
 ```bash
-cp .env.example .env            # add your OPENROUTER_API_KEY
-uv run main.py setup            # clones the repos in repos.toml into workspace/
-uv run main.py ask --repo humanize "Where is naturalsize defined?"
-uv run main.py ask --repo pallets/flask "How do I run the tests?"
-uv run app.py                   # web UI, opens http://127.0.0.1:7860
-uv run evals/run_evals.py
+git clone https://github.com/renad-alsaif/RepoScout.git
+cd RepoScout
+cp .env.example .env          # Windows: copy .env.example .env
 ```
 
-`--repo` takes a name from `repos.toml`, `owner/name`, or a GitHub URL.
-Options: `--no-repo-map`, `--no-memory`, `--max-steps N`, `--no-guard` (attack demo only).
+Open `.env` and paste your key after `OPENROUTER_API_KEY=`. Then download the test repositories:
 
-The web UI (`uv run app.py`) takes a repository link and a question. Opening an issue needs the user's permission: a checkbox ticked before asking. If it is off, the write is denied. The guard always runs first and cannot be turned off in the UI.
+```bash
+uv run main.py setup
+```
 
-Links to repositories in `repos.toml` use the pinned copy. Any other public repository is downloaded without media or model files (images, videos, archives, weights).
+### 3a. Use the web interface
+
+```bash
+uv run app.py
+```
+
+Your browser opens http://127.0.0.1:7860. Paste a GitHub repository link, type a question and click **Ask**. Open **How RepoScout found this** to see which files it read.
+
+### 3b. Use the terminal
+
+```bash
+uv run main.py ask --repo https://github.com/pallets/flask "How do I run the tests?"
+uv run main.py ask --repo humanize "Where is naturalsize defined?"
+```
+
+`--repo` accepts a GitHub link, `owner/name`, or a name from `repos.toml`.
+Options: `--no-repo-map`, `--no-memory`, `--max-steps N`, `--no-guard` (security demo only).
+
+If the agent wants to open an issue, the terminal asks you to approve it (`y` / `N`).
+
+### 4. Run the evals
+
+```bash
+uv run evals/run_evals.py --sleep 5
+```
+
+Results are saved to `results/<date-time>/summary.md`.
+
 
 ## How it works
 
