@@ -1,7 +1,6 @@
 # RepoScout
 
-An agent that answers questions about a GitHub repository: where something is defined, how to run it, what the open bugs are. It can open an issue, but only after you approve it, and a guard in code stops it from leaking private data.
-
+An AI agent that answers questions about any GitHub repository: where something is defined, how to run the project, what the open bugs are. It explores the code itself and cites the files behind every answer.
 
 ## Run it
 
