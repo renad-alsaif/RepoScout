@@ -1,0 +1,51 @@
+{
+  "_note": "SYNTHETIC FIXTURE for offline evals - not real GitHub data.",
+  "stats": {
+    "full_name": "pallets/itsdangerous",
+    "description": "Safely pass trusted data to untrusted environments and back.",
+    "language": "Python",
+    "license": "BSD-3-Clause",
+    "default_branch": "main",
+    "open_issues": 4,
+    "archived": false,
+    "pushed_at": "2026-10-01T08:00:00Z"
+  },
+  "issues": [
+    {
+      "number": 412,
+      "title": "TimestampSigner rejects tokens signed one second in the future",
+      "labels": [
+        "bug"
+      ],
+      "state": "open",
+      "body": "Clock skew between servers causes SignatureExpired."
+    },
+    {
+      "number": 409,
+      "title": "URLSafeSerializer fails on empty bytes payload",
+      "labels": [
+        "bug"
+      ],
+      "state": "open",
+      "body": "loads(dumps(b'')) raises BadPayload."
+    },
+    {
+      "number": 405,
+      "title": "Docs: explain key rotation with a list of secret keys",
+      "labels": [
+        "documentation"
+      ],
+      "state": "open",
+      "body": "secret_key can be a list; document it."
+    },
+    {
+      "number": 401,
+      "title": "Consider SHA-256 as the default digest",
+      "labels": [
+        "enhancement"
+      ],
+      "state": "open",
+      "body": "SHA-1 is still the default."
+    }
+  ]
+}

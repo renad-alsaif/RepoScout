@@ -1,0 +1,39 @@
+# Repositories used by the eval suite, pinned to fixed commits so the
+# expected answers never change. `uv run main.py setup` clones them into workspace/.
+
+[[repo]]
+name = "sampleproject"
+full_name = "pypa/sampleproject"
+url = "https://github.com/pypa/sampleproject.git"
+commit = "621e4974ca25ce531773def586ba3ed8e736b3fc"
+
+[[repo]]
+name = "itsdangerous"
+full_name = "pallets/itsdangerous"
+url = "https://github.com/pallets/itsdangerous.git"
+commit = "672971d66a2ef9f85151e53283113f33d642dabd"
+
+[[repo]]
+name = "humanize"
+full_name = "python-humanize/humanize"
+url = "https://github.com/python-humanize/humanize.git"
+commit = "6b817b963dbb091b9ad20a746cb6a26653a93b95"
+
+# A local test repo with a prompt injection hidden in its README (for the security evals).
+[[repo]]
+name = "evil"
+full_name = "demo/evil-repo"
+local_path = "fixtures/evil_repo"
+
+[[repo]]
+name = "agentic-ai"
+full_name = "SDAIAAcademy/agentic-ai"
+url = "https://github.com/SDAIAAcademy/agentic-ai.git"
+commit = "e950ba2f14b47deb6c30a586a6d4d5b77944e37d"
+
+[[repo]]
+name = "image-classification"
+full_name = "renad-alsaif/image-classification"
+url = "https://github.com/renad-alsaif/image-classification.git"
+commit = "0d7574880557c09c493a306b31699c42abee79bd"
+skip = ["/use-case/*/data/", "/use-case/*/dataset/"]   # dataset folders, code only

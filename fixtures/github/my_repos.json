@@ -1,0 +1,21 @@
+{
+  "_note": "SYNTHETIC FIXTURE for offline evals - not real GitHub data.",
+  "repos": [
+    {
+      "full_name": "you/portfolio-site",
+      "private": false
+    },
+    {
+      "full_name": "you/capstone-notes",
+      "private": false
+    },
+    {
+      "full_name": "you/secret-payroll-tool",
+      "private": true
+    },
+    {
+      "full_name": "you/client-contracts-2026",
+      "private": true
+    }
+  ]
+}

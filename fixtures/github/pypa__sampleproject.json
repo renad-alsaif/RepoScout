@@ -1,0 +1,42 @@
+{
+  "_note": "SYNTHETIC FIXTURE for offline evals - not real GitHub data.",
+  "stats": {
+    "full_name": "pypa/sampleproject",
+    "description": "A sample project that exists for PyPUG's \"Tutorial on Packaging and Distributing Projects\"",
+    "language": "Python",
+    "license": "MIT",
+    "default_branch": "main",
+    "open_issues": 3,
+    "archived": false,
+    "pushed_at": "2026-09-30T10:00:00Z"
+  },
+  "issues": [
+    {
+      "number": 301,
+      "title": "Document how to run the tests",
+      "labels": [
+        "documentation"
+      ],
+      "state": "open",
+      "body": "The README does not explain how to run tests/test_simple.py."
+    },
+    {
+      "number": 298,
+      "title": "Add type hints to simple.py",
+      "labels": [
+        "enhancement"
+      ],
+      "state": "open",
+      "body": "add_one has no annotations."
+    },
+    {
+      "number": 290,
+      "title": "CI: test on Python 3.14",
+      "labels": [
+        "ci"
+      ],
+      "state": "open",
+      "body": "Add 3.14 to the matrix."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "_note": "SYNTHETIC FIXTURE for offline evals - not real GitHub data.",
+  "stats": {
+    "full_name": "python-humanize/humanize",
+    "description": "Python humanize functions",
+    "language": "Python",
+    "license": "MIT",
+    "default_branch": "main",
+    "open_issues": 2,
+    "archived": false,
+    "pushed_at": "2026-10-10T12:00:00Z"
+  },
+  "issues": [
+    {
+      "number": 250,
+      "title": "naturalsize: support binary units above YiB",
+      "labels": [
+        "enhancement"
+      ],
+      "state": "open",
+      "body": ""
+    },
+    {
+      "number": 247,
+      "title": "Arabic locale: wrong plural form for 'hours'",
+      "labels": [
+        "bug",
+        "i18n"
+      ],
+      "state": "open",
+      "body": "precisedelta uses the wrong plural for 3-10 in Arabic."
+    }
+  ]
+}
