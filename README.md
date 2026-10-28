@@ -14,8 +14,6 @@ You only need two tools and a free API key:
   - Mac / Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
 - **OpenRouter API key**: create one at https://openrouter.ai/keys
 
-There is no `requirements.txt`: dependencies are listed in `pyproject.toml` and pinned in `uv.lock`. The first `uv run` installs everything automatically.
-
 ### 2. Set up
 
 ```bash
