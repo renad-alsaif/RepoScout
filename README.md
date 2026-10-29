@@ -14,21 +14,20 @@ The demo shows three cases: a question with no repository link (a clear error, t
 - 20 eval tasks on 5 repositories, 2 configurations, 9 automatic grader types: 20/20 in both
 - Web interface (Gradio) and command line
 
-## Run it
+## Getting started
 
-### 1. Requirements
-
-You only need two tools and a free API key:
+### Requirements
 
 - **Git**: https://git-scm.com/downloads
-- **uv**: installs Python and all packages for you
+- **uv**, which installs Python and all dependencies:
   - Windows (PowerShell): `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
-  - Mac / Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
-  - Close and reopen the terminal after installing uv.
-- **OpenRouter API key**: create one at https://openrouter.ai/keys
+  - macOS / Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+  - Restart the terminal after installing uv.
+- **An OpenRouter API key**: https://openrouter.ai/keys
 
+Dependencies are declared in `pyproject.toml` and pinned in `uv.lock`; the first `uv run` installs them automatically.
 
-### 2. Set up
+### Installation
 
 ```bash
 git clone https://github.com/renad-alsaif/RepoScout.git
@@ -36,35 +35,37 @@ cd RepoScout
 cp .env.example .env          # Windows: copy .env.example .env
 ```
 
-Open `.env` and paste your key after `OPENROUTER_API_KEY=`. Then download the test repositories:
+Add your key to `.env` after `OPENROUTER_API_KEY=`, then download the evaluation repositories:
 
 ```bash
 uv run main.py setup
 ```
 
-### 3a. Web interface
+### Usage
+
+**Web interface**
 
 ```bash
 uv run app.py
 ```
 
-
-### 3b. Terminal
+**Command line**
 
 ```bash
 uv run main.py ask --repo https://github.com/pallets/flask "How do I run the tests?"
 uv run main.py ask --repo humanize "Where is naturalsize defined?"
 ```
 
-`--repo` accepts a GitHub link, `owner/name`, or a name from `repos.toml`. Options: `--no-repo-map`, `--no-memory`, `--max-steps N`, `--no-guard` (security demo only). If the agent wants to open an issue, the terminal asks you to approve it (`y` / `N`).
+`--repo` accepts a GitHub URL, `owner/name`, or a name from `repos.toml`.
 
-### 4. Evals
+| Option | Effect |
+|---|---|
+| `--max-steps N` | Change the step budget for this question |
+| `--no-repo-map` | Run without the repo map (configuration A) |
+| `--no-memory` | Ignore notes from earlier sessions |
+| `--no-guard` | Disable the guard (security demonstration only) |
 
-```bash
-uv run evals/run_evals.py --sleep 5
-```
-
-Results are saved to `results/<date-time>/summary.md`, with each task's answer, tools and trace.
+Before any issue is created, the terminal asks for approval (`y` / `N`).
 
 ## How it works
 
@@ -165,6 +166,14 @@ Each model call has a 90-second timeout. On an error the call is retried once, t
 ## Evaluation
 
 **5 repositories, 20 tasks, 2 configurations, 9 grader types, all automatic.**
+
+Run the full suite (both configurations):
+
+```bash
+uv run evals/run_evals.py --sleep 5
+```
+
+Useful options: `--configs A` or `--configs B` to run one configuration, `--ids <task-id> ...` to run selected tasks, and `--trials N` to repeat each task. Results are saved to `results/<date-time>/summary.md` with every task's answer, tools used and trace.
 
 ### Repositories
 
