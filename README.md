@@ -305,5 +305,5 @@ Details, remaining risks and data protection (PDPL): `SECURITY.md`.
 **Renad Alsaif**
 Email: [renadalsaiif@gmail.com](mailto:renadalsaiif@gmail.com)
 
-This project was built as the capstone for **SDAIA Academy, Agentic AI Systems Engineering**.
+This project was built as the capstone for **Advanced Agentic AI Systems Engineering - SDAIA Academy**.
 Course repository: [SDAIAAcademy/agentic-ai](https://github.com/SDAIAAcademy/agentic-ai)
