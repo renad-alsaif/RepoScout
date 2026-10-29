@@ -27,7 +27,6 @@ You only need two tools and a free API key:
   - Close and reopen the terminal after installing uv.
 - **OpenRouter API key**: create one at https://openrouter.ai/keys
 
-There is no `requirements.txt`: dependencies are listed in `pyproject.toml` and pinned in `uv.lock`. The first `uv run` installs everything.
 
 ### 2. Set up
 
@@ -49,7 +48,6 @@ uv run main.py setup
 uv run app.py
 ```
 
-Your browser opens http://127.0.0.1:7860. Paste a repository link, type a question and click **Ask**. Tick the checkbox only if you want to allow RepoScout to open an issue. **Cancel** stops waiting for a slow answer.
 
 ### 3b. Terminal
 
